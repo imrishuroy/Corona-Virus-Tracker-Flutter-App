@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {
-  final API api;
-
   APIService(this.api);
+  final API api;
 
   Future<String> getAccessToken() async {
     final response = await http.post(
@@ -30,7 +29,7 @@ class APIService {
     @required String accessToken,
     @required Endpoint endpoint,
   }) async {
-    final uri = api.endPointUri(endpoint);
+    final uri = api.endpointUri(endpoint);
     final response = await http.get(
       uri.toString(),
       headers: {'Authorization': 'Bearer $accessToken'},
@@ -53,9 +52,9 @@ class APIService {
 
   static Map<Endpoint, String> _responseJsonKeys = {
     Endpoint.cases: 'cases',
-    Endpoint.casesConfirmed: 'casesConfirmed',
-    Endpoint.casesSuspected: 'caseSuspected',
-    Endpoint.deaths: 'deaths',
-    Endpoint.recovered: 'recovered'
+    Endpoint.casesSuspected: 'data',
+    Endpoint.casesConfirmed: 'data',
+    Endpoint.deaths: 'data',
+    Endpoint.recovered: 'data',
   };
 }

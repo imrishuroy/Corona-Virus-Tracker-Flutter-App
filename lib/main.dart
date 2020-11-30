@@ -15,14 +15,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<DataRepository>(
-      create: (_) => DataRepository(apiServices: APIService(API.sandbox())),
+      create: (_) => DataRepository(
+        apiService: APIService(API.sandbox()),
+      ),
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Coronavirus Tracker',
-          theme: ThemeData.dark().copyWith(
-              scaffoldBackgroundColor: Color(0xff101010),
-              cardColor: Color(0xff222222)),
-          home: DashBoard()),
+        debugShowCheckedModeBanner: false,
+        title: 'Coronavirus Tracker',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Color(0xFF101010),
+          cardColor: Color(0xFF222222),
+        ),
+        home: Dashboard(),
+      ),
     );
   }
 }

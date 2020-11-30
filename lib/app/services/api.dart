@@ -10,8 +10,8 @@ enum Endpoint {
 }
 
 class API {
-  final String apiKey;
   API({@required this.apiKey});
+  final String apiKey;
 
   factory API.sandbox() => API(apiKey: APIKeys.ncovSandboxKey);
 
@@ -23,7 +23,7 @@ class API {
         path: 'token',
       );
 
-  Uri endPointUri(Endpoint endpoint) => Uri(
+  Uri endpointUri(Endpoint endpoint) => Uri(
         scheme: 'https',
         host: host,
         path: _paths[endpoint],
@@ -31,9 +31,9 @@ class API {
 
   static Map<Endpoint, String> _paths = {
     Endpoint.cases: 'cases',
+    Endpoint.casesSuspected: 'casesSuspected',
     Endpoint.casesConfirmed: 'casesConfirmed',
-    Endpoint.casesSuspected: 'caseSuspected',
     Endpoint.deaths: 'deaths',
-    Endpoint.recovered: 'recovered'
+    Endpoint.recovered: 'recovered',
   };
 }
