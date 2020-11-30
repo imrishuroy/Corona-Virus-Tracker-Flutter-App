@@ -2,11 +2,16 @@ import 'package:corona_virus_traker_flutte_app/app/repositories/data_repositorie
 import 'package:corona_virus_traker_flutte_app/app/services/api.dart';
 import 'package:corona_virus_traker_flutte_app/app/ui/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'app/services/api_services.dart';
 
-void main() {
+void main() async {
+  Intl.defaultLocale = 'en_GB';
+  await initializeDateFormatting();
   runApp(MyApp());
 }
 
