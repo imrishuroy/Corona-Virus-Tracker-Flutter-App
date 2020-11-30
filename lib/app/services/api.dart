@@ -23,8 +23,11 @@ class API {
         path: 'token',
       );
 
-  Uri endPointUri(Endpoint endpoint) =>
-      Uri(scheme: 'https', host: host, path: _paths[endpoint]);
+  Uri endPointUri(Endpoint endpoint) => Uri(
+        scheme: 'https',
+        host: host,
+        path: _paths[endpoint],
+      );
 
   static Map<Endpoint, String> _paths = {
     Endpoint.cases: 'cases',

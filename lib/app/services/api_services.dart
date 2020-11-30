@@ -4,15 +4,15 @@ import 'package:corona_virus_traker_flutte_app/app/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class APIServices {
+class APIService {
   final API api;
 
-  APIServices(this.api);
+  APIService(this.api);
 
   Future<String> getAccessToken() async {
     final response = await http.post(
       api.tokenUri().toString(),
-      headers: {'Athorization': 'Basic ${api.apiKey}'},
+      headers: {'Authorization': 'Basic ${api.apiKey}'},
     );
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -31,8 +31,10 @@ class APIServices {
     @required Endpoint endpoint,
   }) async {
     final uri = api.endPointUri(endpoint);
-    final response = await http
-        .get(uri.toString(), headers: {'Authorization': 'Bearer $accessToken'});
+    final response = await http.get(
+      uri.toString(),
+      headers: {'Authorization': 'Bearer $accessToken'},
+    );
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       if (data.isNotEmpty) {
@@ -45,7 +47,7 @@ class APIServices {
       }
     }
     print(
-        'Request $uri failed \nResponse: ${response.statusCode} ${response.reasonPhrase}');
+        'Request $uri failed\nResponse: ${response.statusCode} ${response.reasonPhrase}');
     throw response;
   }
 
