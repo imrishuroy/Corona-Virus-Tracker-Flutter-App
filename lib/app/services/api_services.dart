@@ -27,7 +27,7 @@ class APIService {
     throw response;
   }
 
-  Future<EndPointData> getEndpointData({
+  Future<EndpointData> getEndpointData({
     @required String accessToken,
     @required Endpoint endpoint,
   }) async {
@@ -45,7 +45,7 @@ class APIService {
         final String dateString = endpointData['date'];
         final date = DateTime.tryParse(dateString);
         if (value != null) {
-          return EndPointData(value: value, date: date);
+          return EndpointData(value: value, date: date);
         }
       }
     }
